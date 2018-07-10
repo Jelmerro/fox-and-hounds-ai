@@ -1,0 +1,20 @@
+@media (max-width: 450px) {
+    #notifications {
+        left: 2em;
+        width: auto;
+        max-width: 100%;
+    }
+}
+@media (max-width: 600px) {
+    body {
+        font-size: 10px;
+    }
+    select {
+        font-size: 0.8em;
+    }
+}
+@media (min-width: 1600px) {
+    body {
+        font-size: 18px;
+    }
+}

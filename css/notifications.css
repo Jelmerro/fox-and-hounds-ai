@@ -1,0 +1,32 @@
+#notifications {
+    position: fixed;
+    width: 100%;
+    max-width: 400px;
+    right: 2em;
+    top: 2em;
+    z-index: 100;
+    box-sizing: border-box;
+}
+.notification {
+    background-color: #eee;
+    font-size: 1.5em;
+    border: 0.1em solid black;
+    padding: 1em;
+    width: 400px;
+    max-width: 100%;
+    border-radius: 0.2em;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: 2em;
+    margin-bottom: 0.5em;
+    opacity: 0.8;
+}
+.notify-info {
+    border-color: #7c3;
+}
+.notify-warn {
+    border-color: #fa0;
+}
+.notify-error {
+    border-color: #f33;
+}

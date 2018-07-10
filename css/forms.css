@@ -1,0 +1,56 @@
+form {
+    padding: 0 1em;
+}
+.checkbox-container {
+    cursor: pointer;
+    -moz-user-select: none;
+    user-select: none;
+}
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+}
+input:checked ~ .checkbox-indicator {
+    background-color: #7c3;
+}
+.checkbox-indicator {
+    display: inline-block;
+    width: 1.1em;
+    height: 1.1em;
+    background-color: #ddd;
+}
+input[type="number"] {
+    background-color: #eee;
+    color: #111;
+    border: 1px solid #aaa;
+    padding: 0.2em;
+    width: 3.5em;
+}
+.round {
+    border-radius: 0.5em;
+}
+.form-row {
+    padding: 0.5em 0;
+}
+select {
+    background-color: #eee;
+    color: #111;
+    border: 1px solid #aaa;
+    padding: 0.3em;
+    width: 80%;
+}
+option:focus, option:active, option:checked {
+    color: #eee;
+    background: linear-gradient(#7c3, #7c3);
+    outline: none;
+}
+input:checked ~ .checkbox-indicator.warn {
+    background-color: #fa0;
+}
+input:checked ~ .checkbox-indicator.error {
+    background-color: #f33;
+}
+.align-width {
+    display: inline-block;
+    width: 11em;
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Research and test AI on the Fox and Hounds game">
+        <meta name="author" content="Jelmerro">
+        <link href="css/general.css" type="text/css" rel="stylesheet" />
+        <link href="css/board.css" type="text/css" rel="stylesheet" />
+        <link href="css/notifications.css" type="text/css" rel="stylesheet" />
+        <link href="css/forms.css" type="text/css" rel="stylesheet" />
+        <link href="css/scaling.css" type="text/css" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/svg" href="img/fox.svg">
+        <script src="js/board.js"></script>
+        <script src="js/ai.js"></script>
+        <script src="js/main.js"></script>
+        <title>Fox and Hounds AI project</title>
+    </head>
+    <body>
+        <div id="notifications"></div>
+        <nav>
+            <img src="img/fox.svg" alt="fox">
+            Fox and Hounds AI project
+        </nav>
+        <main>
+            <div id="board" ondragstart="return false;">
+                <noscript>Enable javascript or check the console</noscript>
+            </div>
+            <form autocomplete="off" onSubmit="return false;">
+                <div>
+                    <h4>Wins</h4>
+                    <div class="form-row">
+                        <span class="hound-name">Hounds</span>: <span id="win-hound">0</span>
+                        <span class="fox-name">Fox</span>: <span id="win-fox">0</span>
+                        <button type="button" id="controls-reset-scores">Reset</button>
+                        <span id="win-ratio"></span>
+                    </div>
+                </div>
+                <div>
+                    <h4>General</h4>
+                    <div class="form-row">
+                        <button type="button" id="controls-toggle-names-icons">Toggle names &amp; icons</button>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="controls-allow-invalid">
+                            <span class="checkbox-indicator warn"></span>
+                            <span class="checkbox-text">Allow invalid moves</span>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label class="checkbox-container">
+                            <input type="checkbox" checked id="controls-show-gameover">
+                            <span class="checkbox-indicator"></span>
+                            <span class="checkbox-text">Delay before restart when gameover</span>
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="controls-rotate-board">
+                            <span class="checkbox-indicator"></span>
+                            <span class="checkbox-text">Rotate board</span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <h4>Notifications</h4>
+                    <div class="form-row">
+                        <label class="checkbox-container">
+                            <input type="radio" checked name="notifications-level">
+                            <span class="checkbox-indicator round"></span>
+                            <span class="checkbox-text">Info</span>
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="radio" name="notifications-level" id="notify-level-warn">
+                            <span class="checkbox-indicator round warn"></span>
+                            <span class="checkbox-text">Warn</span>
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="radio" name="notifications-level" id="notify-level-error">
+                            <span class="checkbox-indicator round error"></span>
+                            <span class="checkbox-text">Error</span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <h4>AI</h4>
+                    <div class="form-row">
+                        <label class="checkbox-container align-width">
+                            <input type="checkbox" id="controls-ai-hounds">
+                            <span class="checkbox-indicator"></span>
+                            <span class="checkbox-text">Enable <span class="hound-name">Hounds</span></span>
+                        </label>
+                        <label class="checkbox-container align-width">
+                            <input type="checkbox" id="controls-ai-fox">
+                            <span class="checkbox-indicator"></span>
+                            <span class="checkbox-text">Enable <span class="fox-name">Fox</span></span>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label class="align-width">
+                            <select id="controls-ai-algorithm-hound" size="2">
+                                <option selected>Pseudorandom</option>
+                                <option>Minimax variations</option>
+                            </select>
+                        </label>
+                        <label class="align-width">
+                            <select id="controls-ai-algorithm-fox" size="2">
+                                <option selected>Pseudorandom</option>
+                                <option>Minimax variations</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label class="align-width">
+                            <input type="number" min="1" max="6" value="3" id="minimax-depth-hound">
+                            <span>depth</span>
+                        </label>
+                        <label class="align-width">
+                            <input type="number" min="1" max="6" value="3" id="minimax-depth-fox">
+                            <span>depth</span>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label class="align-width checkbox-container">
+                            <input type="radio" name="minimax-mode-hound" checked>
+                            <span class="checkbox-indicator round"></span>
+                            <span class="checkbox-text">Pure</span>
+                        </label>
+                        <label class="align-width checkbox-container">
+                            <input type="radio" name="minimax-mode-fox" checked>
+                            <span class="checkbox-indicator round"></span>
+                            <span class="checkbox-text">Pure</span>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label class="align-width checkbox-container">
+                            <input type="radio" name="minimax-mode-hound" id="minimax-mode-hound-biased">
+                            <span class="checkbox-indicator round"></span>
+                            <span class="checkbox-text">Biased</span>
+                        </label>
+                        <label class="align-width checkbox-container">
+                            <input type="radio" name="minimax-mode-fox" id="minimax-mode-fox-biased">
+                            <span class="checkbox-indicator round"></span>
+                            <span class="checkbox-text">Biased</span>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label class="align-width checkbox-container">
+                            <input type="radio" name="minimax-mode-hound" id="minimax-mode-hound-average">
+                            <span class="checkbox-indicator round"></span>
+                            <span class="checkbox-text">Average</span>
+                        </label>
+                        <label class="align-width checkbox-container">
+                            <input type="radio" name="minimax-mode-fox" id="minimax-mode-fox-average">
+                            <span class="checkbox-indicator round"></span>
+                            <span class="checkbox-text">Average</span>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label>
+                            <input type="number" min="1" max="1000" value="100" id="controls-ai-speed">
+                            <span>milliseconds per move</span>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <button type="button" id="controls-ai-next-step">Advance one move</button>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="controls-toggle-pause">
+                            <span class="checkbox-indicator warn"></span>
+                            <span class="checkbox-text">Pause all</span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </main>
+        <footer>
+            <hr />
+            <a href="https://github.com/Jelmerro/fox-and-hounds-ai" title="Github repository" target="_blank">Fox and Hounds AI project</a>
+            by
+            <a href="https://github.com/Jelmerro" title="Jelmer van Arnhem" target="_blank">Jelmerro</a>
+            licensed as
+            <a href="LICENSE" title="License">MIT</a>
+            <p>
+                Icons originally made by
+                <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect" target="_blank">Pixel perfect</a>
+                licensed as
+                <a href="img/LICENSE" title="Creative Commons BY 3.0">CC 3.0 BY</a>
+            </p>
+        </footer>
+    </body>
+</html>

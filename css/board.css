@@ -1,0 +1,44 @@
+#board {
+    line-height: 0;
+    border: 1.3em solid #740;
+    box-shadow: 0 0 1.4em #333;
+    white-space: nowrap;
+    border-radius: 1em;
+    color: #fff;
+    height: 100%;
+    transition: 0.5s;
+    user-select: none;
+    -moz-user-select: none;
+}
+.rotated {
+    transform: rotate(180deg);
+}
+.rotated .animal {
+    transform: rotate(180deg);
+}
+#animals {
+    position: absolute;
+}
+.animal {
+    position: absolute;
+}
+.animal > img {
+    padding: 0.5em;
+}
+.black-square {
+    width: 4em;
+    height: 4em;
+    background-color: #5a3300;
+    display: inline-block;
+    margin: 0;
+}
+.white-square {
+    width: 4em;
+    height: 4em;
+    background-color: #f5f5dc;
+    display: inline-block;
+    margin: 0;
+}
+.focussed {
+    filter: drop-shadow(0.2em 0.2em grey) drop-shadow(-0.2em -0.2em grey) drop-shadow(0.2em -0.2em grey) drop-shadow(-0.2em 0.2em gray);
+}
