@@ -1,7 +1,7 @@
 Fox and Hounds AI project
 =========================
 
-[Github](https://github.com/Jelmerro/fox-and-hounds-ai) [Live version](https://jelmerro.github.io/fox-and-hounds-ai/index.html)
+[Github](https://github.com/Jelmerro/fox-and-hounds-ai) - [Live version](https://jelmerro.github.io/fox-and-hounds-ai/index.html)
 
 This is a school project to recreate the Fox and Hounds board game.
 It's known in dutch as "Wolf en Schapen", which is why the tiles and names can be switched.
@@ -13,7 +13,7 @@ but the evaluation function is decent at best.
 
 ### Main
 
-- Play a game of Hounds and Fox with two players
+- Play a game of Fox and Hounds with two players
 - Compete against an AI bot player for either side
 - Run simulations with two AI bot players (with options for a couple of algorithms)
 - Minimax algorithm with variable depth (1-6 turns)

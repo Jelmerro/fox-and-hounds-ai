@@ -68,9 +68,9 @@ class Board {
 
     checkVictory(register=true) {
         // After each move this function is called to check if the game is over:
-        // Ffirst it checks if the fox is closed in, which means a hounds win.
+        // First it checks if the fox is closed in, which means the hounds win.
         // Secondly it checks if the hounds are stuck, meaning the fox wins.
-        // Lastly is checks if the fox has reached the top row of the board,
+        // Lastly it checks if the fox has reached the top row of the board,
         // which results in a win for the fox.
         // the board is reset to the startup state and a new game can begin
         if (this.possibleMoves("fox").length === 0) {
@@ -202,7 +202,7 @@ class Hound extends Animal {
     }
 }
 class Fox extends Animal {
-    // There will always be one fox (or Wolf) on the board.
+    // There will always be one fox (or Wolf) on the board
     constructor(x, y) {
         super(x, y)
         this.name = "fox"
@@ -308,4 +308,3 @@ function updateBoard() {
         animalsHtml.appendChild(animalElement)
     })
 }
-

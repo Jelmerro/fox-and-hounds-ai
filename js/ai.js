@@ -35,7 +35,7 @@ function nextAIMove(manual=true) {
 }
 
 class AI {
-    // Super class for the AI, implements random move algorithm
+    // Super class for the AI, implements the algorithms for both AI subclasses
     constructor() {
         this.name = ""
     }
@@ -210,13 +210,12 @@ class FoxAI extends AI {
 
     evaluateScore(boardState) {
         let score = 0
-        // Motivate the fox to the top of the board
+        // Motivate the fox to move to the top of the board
         boardState.animals.forEach(animal => {
             if (animal.name === "fox") {
                 score = -animal.y * 2
             }
         })
-        //TODO more checks to make the fucker move out of spawn
         // Make losing a no go if possible
         // and winning top priority
         score += this.terminalScore(boardState)
@@ -265,7 +264,7 @@ class HoundAI extends AI {
         })
         const averageXPosition = totalWidth / hounds.length
         score -= Math.abs(averageXPosition - fox.x)
-        // Make sure there are no gaps
+        // Make sure there are no gaps between the hounds
         // -1 and 8 are the "walls", where gaps are also discouraged
         const xPositions = []
         hounds.forEach(hound => {
